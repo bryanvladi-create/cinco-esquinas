@@ -1,3 +1,29 @@
+<!-- Backdrop — fuera del nav para evitar stacking context del padre -->
+<div class="menu-backdrop" [class.visible]="menuOpen" (click)="closeMenu()"></div>
+
+<!-- Panel lateral — también fuera del nav -->
+<ul class="navbar-links" [class.open]="menuOpen">
+  <li class="close-item">
+    <button class="close-btn" (click)="closeMenu()" aria-label="Cerrar menú">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </li>
+
+  <li *ngFor="let link of links">
+    <a (click)="navigateTo(link.anchor)" style="cursor:pointer">{{ link.label }}</a>
+  </li>
+
+  <li>
+    <a [href]="content.whatsappUrl" target="_blank" class="nav-cta" (click)="closeMenu()">
+      Pedir Ahora
+    </a>
+  </li>
+</ul>
+
+<!-- Navbar propiamente dicho -->
 <nav class="navbar" [class.scrolled]="scrolled">
   <div class="navbar-inner">
 
@@ -6,25 +32,11 @@
       <span class="brand-text">Las 5 Esquinas</span>
     </a>
 
-    <!-- Backdrop oscuro al abrir el menú móvil -->
-    <div class="menu-backdrop" [class.visible]="menuOpen" (click)="closeMenu()"></div>
-
-    <ul class="navbar-links" [class.open]="menuOpen">
-
-      <!-- Botón X para cerrar dentro del panel -->
-      <li class="close-item">
-        <button class="close-btn" (click)="closeMenu()" aria-label="Cerrar menú">
-          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-      </li>
-
+    <!-- Links visibles solo en desktop dentro del nav -->
+    <ul class="navbar-links-desktop">
       <li *ngFor="let link of links">
         <a (click)="navigateTo(link.anchor)" style="cursor:pointer">{{ link.label }}</a>
       </li>
-
       <li>
         <a [href]="content.whatsappUrl" target="_blank" class="nav-cta" (click)="closeMenu()">
           Pedir Ahora
