@@ -1,0 +1,36 @@
+<nav class="navbar" [class.scrolled]="scrolled">
+  <div class="navbar-inner">
+
+    <!-- Logo → siempre va a home y hace scroll al top -->
+    <a routerLink="/" class="navbar-brand" (click)="closeMenu()">
+      <span class="brand-icon">🐟</span>
+      <span class="brand-text">Las 5 Esquinas</span>
+    </a>
+
+    <ul class="navbar-links" [class.open]="menuOpen">
+      <!-- Links de sección: funcionan desde home y desde cualquier ruta -->
+      <li *ngFor="let link of links">
+        <a (click)="navigateTo(link.anchor)" style="cursor:pointer">
+          {{ link.label }}
+        </a>
+      </li>
+
+      <!-- CTA WhatsApp -->
+      <li>
+        <a [href]="content.whatsappUrl" target="_blank" class="nav-cta" (click)="closeMenu()">
+          Pedir Ahora
+        </a>
+      </li>
+    </ul>
+
+    <button
+      class="hamburger"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Abrir menú"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</nav>

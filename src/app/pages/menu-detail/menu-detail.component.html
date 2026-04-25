@@ -1,0 +1,124 @@
+<!-- NOT FOUND -->
+<div *ngIf="notFound" class="not-found">
+  <span class="nf-icon">🐟</span>
+  <h2>Plato no encontrado</h2>
+  <p>No encontramos lo que buscas, pero tenemos mucho más.</p>
+  <button (click)="goBack()" class="btn-back">← Volver al Menú</button>
+</div>
+
+<!-- DETAIL PAGE -->
+<div *ngIf="item" class="detail-page">
+
+  <!-- ── Hero Banner ── -->
+  <div class="detail-hero">
+    <div class="detail-hero-bg" [style.backgroundImage]="'url(' + item.imageUrl + ')'"></div>
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <button (click)="goBack()" class="btn-back-hero">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+        </svg>
+        Volver al menú
+      </button>
+
+      <span class="detail-tag">{{ item.tag }}</span>
+      <h1>{{ item.title }}</h1>
+      <p class="detail-hero-desc">{{ item.longDescription || item.description }}</p>
+
+      <div class="detail-variants" *ngIf="item.variants?.length">
+        <span class="variant-label">Presentaciones:</span>
+        <div class="variant-pills">
+          <span class="vpill" *ngFor="let v of item.variants">{{ v }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Dishes Section ── -->
+  <section class="dishes-section" *ngIf="item.dishes?.length">
+    <div class="dishes-inner">
+
+      <div class="dishes-header">
+        <span class="section-label">Lo que puedes pedir</span>
+        <h2 class="section-title">Elige tu plato</h2>
+        <p class="section-desc">
+          Todos preparados al momento con ingredientes frescos.<br>
+          Cada uno tiene su propio carácter — y todos son legendarios.
+        </p>
+      </div>
+
+      <div class="dishes-grid">
+        <div class="dish-card" *ngFor="let dish of item.dishes">
+          <div class="dish-img-wrap">
+            <img [src]="dish.imageUrl" [alt]="dish.name" loading="lazy" class="dish-img" />
+            <span class="dish-badge" *ngIf="dish.badge">{{ dish.badge }}</span>
+          </div>
+          <div class="dish-body">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
+            <div class="dish-tags" *ngIf="dish.tags?.length">
+              <span class="dish-tag" *ngFor="let t of dish.tags">{{ t }}</span>
+            </div>
+            <a [href]="content.whatsappUrl" target="_blank" class="dish-order-btn">
+              <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 2C8.28 2 2 8.28 2 16c0 2.47.67 4.79 1.84 6.79L2 30l7.39-1.82C11.26 29.36 13.58 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm7.25 19.91c-.3.84-1.76 1.62-2.42 1.71-.62.08-1.39.12-2.25-.14a20.5 20.5 0 01-2.04-.74C13.03 21.47 10.3 18.2 10.07 17.9c-.22-.3-1.83-2.43-1.83-4.64 0-2.2 1.16-3.28 1.57-3.73.42-.44.91-.55 1.21-.55.3 0 .6.01.87.02.28.01.65-.11 1.02.77.38.9 1.28 3.1 1.39 3.32.11.22.18.48.04.77-.15.29-.22.47-.44.72-.22.25-.46.56-.66.75-.22.21-.44.44-.19.87.25.42 1.1 1.81 2.37 2.93 1.63 1.45 3 1.9 3.42 2.12.42.22.66.18.9-.11.25-.29 1.06-1.24 1.34-1.67.28-.42.57-.35.96-.21.38.14 2.44 1.15 2.86 1.36.42.21.7.32.8.49.11.18.11 1.03-.19 1.87z"/>
+              </svg>
+              Pedir este plato
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Wave ── -->
+  <div class="wave-divider" style="background:var(--crema)">
+    <svg viewBox="0 0 1440 55" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#0B2545" d="M0,28 C360,55 1080,0 1440,28 L1440,55 L0,55 Z"/>
+    </svg>
+  </div>
+
+  <!-- ── Ingredients Section ── -->
+  <section class="ingredients-section" *ngIf="item.ingredients?.length">
+    <div class="ingredients-inner">
+      <div class="ing-header">
+        <span class="section-label" style="color:rgba(244,99,26,.9)">Lo que lo hace legendario</span>
+        <h2 class="section-title" style="color:#fff">Sus Ingredientes</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,.7); margin:0 auto">
+          Cada componente elegido con cuidado. Sin atajos, sin conservantes.<br>
+          Solo frescura y tradición en cada cucharada.
+        </p>
+      </div>
+      <div class="ing-grid">
+        <div class="ing-card" *ngFor="let ing of item.ingredients; let i = index"
+             [style.animationDelay]="(i * 0.08) + 's'">
+          <div class="ing-icon">{{ ing.icon }}</div>
+          <div class="ing-body">
+            <h3>{{ ing.name }}</h3>
+            <p>{{ ing.description }}</p>
+          </div>
+          <div class="ing-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Section ── -->
+  <section class="detail-cta">
+    <div class="detail-cta-inner">
+      <div class="cta-badge">🔥 ¿Listo para probarlo?</div>
+      <h2>Tu plato te espera<br><span>desde las 8:00 a.m.</span></h2>
+      <p>Ven al local o escríbenos por WhatsApp para apartar tu pedido.</p>
+      <div class="cta-buttons">
+        <a [href]="content.whatsappUrl" target="_blank" class="btn-primary">
+          💬 Pedir por WhatsApp
+        </a>
+        <a [href]="content.mapsUrl" target="_blank" class="btn-outline">
+          📍 Cómo Llegar
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>

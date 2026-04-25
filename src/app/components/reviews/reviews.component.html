@@ -1,0 +1,23 @@
+<section class="reviews-section" id="resenas">
+  <div class="reviews-header">
+    <span class="section-label">Lo que dicen</span>
+    <h2 class="section-title">Nuestros Clientes Hablan</h2>
+    <p class="section-desc">
+      Más de 2,000 personas ya lo vivieron. Lee lo que dicen.
+    </p>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card" *ngFor="let review of content.reviews">
+      <div class="review-stars">{{ getStars(review.rating) }}</div>
+      <p class="review-text">"{{ review.text }}"</p>
+      <div class="review-author">
+        <div class="review-avatar">{{ review.initial }}</div>
+        <div class="review-meta">
+          <div class="review-name">{{ review.author }}</div>
+          <div class="review-role">{{ review.role }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

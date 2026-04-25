@@ -1,0 +1,147 @@
+/* ══════════════════════════════════════
+   ENCEBOLLADOS LAS 5 ESQUINAS
+   Global Styles
+══════════════════════════════════════ */
+
+// ── Variables ──
+:root {
+  --naranja:       #F4631A;
+  --naranja-deep:  #C94E0E;
+  --marino:        #0B2545;
+  --marino-light:  #1A3F6F;
+  --crema:         #FDF6EC;
+  --blanco:        #FFFFFF;
+  --gris-suave:    #F5F5F0;
+  --texto:         #1A1A1A;
+  --font-display:  'Playfair Display', serif;
+  --font-body:     'Lato', sans-serif;
+}
+
+// ── Reset ──
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--texto);
+  background: var(--crema);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// ── Shared Utilities ──
+.section-label {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin-bottom: .8rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  color: var(--marino);
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.72;
+  max-width: 560px;
+}
+
+.btn-primary {
+  background: var(--naranja);
+  color: #fff;
+  border: none;
+  padding: .9rem 2.2rem;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 6px 24px rgba(244, 99, 26, .4);
+
+  &:hover {
+    background: var(--naranja-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(244, 99, 26, .55);
+  }
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.5);
+  padding: .9rem 2.2rem;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  backdrop-filter: blur(8px);
+  transition: background .2s, transform .15s;
+
+  &:hover {
+    background: rgba(255,255,255,.22);
+    transform: translateY(-2px);
+  }
+}
+
+// ── Wave Divider ──
+.wave-divider {
+  line-height: 0;
+  overflow: hidden;
+  margin-top: -1px;
+
+  svg { display: block; width: 100%; }
+}
+
+// ── Animations ──
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50%       { transform: rotate(45deg) translateY(7px); }
+}

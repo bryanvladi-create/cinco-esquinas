@@ -1,0 +1,10 @@
+<div class="proof-bar">
+  <div class="proof-inner">
+    <div class="proof-item" *ngFor="let item of content.proofItems; let last = last">
+      <span class="proof-icon">{{ item.icon }}</span>
+      <span class="proof-value">{{ item.value }}</span>
+      <span class="proof-label">{{ item.label }}</span>
+      <div class="divider-v" *ngIf="!last"></div>
+    </div>
+  </div>
+</div>

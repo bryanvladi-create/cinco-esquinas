@@ -1,0 +1,48 @@
+.proof-bar {
+  background: var(--marino);
+  color: #fff;
+  padding: .95rem 1.5rem;
+}
+
+.proof-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .9rem;
+  padding: .4rem 1.8rem;
+  position: relative;
+}
+
+.proof-icon { font-size: 1.1rem; }
+
+.proof-value {
+  font-weight: 700;
+  color: var(--naranja);
+}
+
+.proof-label { color: rgba(255,255,255,.8); }
+
+.divider-v {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 26px;
+  background: rgba(255,255,255,.2);
+}
+
+@media (max-width: 600px) {
+  .proof-item { padding: .3rem 1rem; }
+  .divider-v  { display: none; }
+}

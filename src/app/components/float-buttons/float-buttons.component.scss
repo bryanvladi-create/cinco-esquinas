@@ -1,0 +1,59 @@
+.float-btns {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  z-index: 999;
+}
+
+.fab {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,.28);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 28px rgba(0,0,0,.38);
+
+    .fab-tooltip { opacity: 1; transform: translateX(0); pointer-events: auto; }
+  }
+}
+
+.fab-wa    { background: #25D366; }
+.fab-maps  { background: var(--naranja); }
+
+.fab-tooltip {
+  position: absolute;
+  right: calc(100% + .7rem);
+  white-space: nowrap;
+  background: var(--marino);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .3rem .75rem;
+  border-radius: .35rem;
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: var(--marino);
+  }
+}
