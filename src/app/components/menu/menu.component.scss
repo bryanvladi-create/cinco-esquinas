@@ -164,8 +164,12 @@ p {
   align-items: center;
   justify-content: center;
   gap: .55rem;
+  flex-wrap: wrap;        /* permite salto de línea limpio en móvil */
+  line-height: 1.6;
 
   svg { flex-shrink: 0; }
+
+  strong { color: var(--marino); }
 }
 
 @media (max-width: 600px) {
